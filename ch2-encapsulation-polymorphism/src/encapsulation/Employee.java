@@ -8,6 +8,8 @@ public class Employee {
 	private String ssn;
 	private double salary;
 	
+	//should use custom constructor and remove default constructor
+	//once object is created, we change its state as less as possible
 	public Employee(int empId, String name, String ssn, double salary) {
 		super();
 		this.empId = empId;
@@ -16,6 +18,7 @@ public class Employee {
 		this.salary = salary;
 	}
 	
+	//remove setter except that we have to change those fields after object created
 	public void changeName(String newName) {
 		if(newName != null) {
 			this.name = newName;

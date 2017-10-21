@@ -11,12 +11,6 @@ public class Main {
 		x1.playDVD();
 		x3.playDVD();
 		
-//		TV tv;
-//		tv = new AppleTV();
-//		tv = new SonyTV();
-//		DVDable dvd;
-//		dvd = new AppleTV();
-		
 		AppleTV appleTV = new AppleTV();
 		SonyTV sonyTV = new SonyTV();
 		showBasicTvFunctions(appleTV);

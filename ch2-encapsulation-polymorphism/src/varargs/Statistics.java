@@ -2,6 +2,7 @@ package varargs;
 
 public class Statistics {
 
+	//use ... to implement variable arguments
 	public float average(int ... nums) {
 		int sum = 0;
 		float result = 0;
