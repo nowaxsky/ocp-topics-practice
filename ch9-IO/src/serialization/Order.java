@@ -16,7 +16,13 @@ public class Order implements Serializable {
 	private static final long serialVersionUID = -355478252451222093L;
 	
 	private List<Shirt> shirts = new ArrayList<>();
+	
+	//when after de-serializing, it will be 100 again
+	//but you should close JVM and de-serialization, or it will be the same value like 99
 	static int staticField = 100;
+	
+	//transient, this field cannot be serialized, 
+	//when after de-serializing, it will be default of field like 0 instead of 100
 	transient int transientField = 100;
 	
 	public Order(Shirt... shirts) {
@@ -28,6 +34,8 @@ public class Order implements Serializable {
 		System.out.println("--- Contructor is launched ---");
 	}
 	
+	//this method is called at pre-serialization
+	//if you want to custom serialization, you have to define this method
 	private void writeObject(ObjectOutputStream oos) throws IOException {
 		oos.defaultWriteObject();
 		
@@ -36,7 +44,8 @@ public class Order implements Serializable {
 		System.out.println("Serialized at: " + now);
 	}
 	
-	
+	//this method is called at pre-serialization
+	//if you want to custom serialization, you have to define this method
 	private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
 		ois.defaultReadObject();
 		System.out.println("Restored from data: " + (Date) ois.readObject());

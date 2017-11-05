@@ -14,6 +14,8 @@ public class Shirt implements Serializable {
 	private String brand;
 	private int quantity;
 	private double cost;
+	
+	//transient, this field cannot be serialized
 	private transient double price;
 	
 	public Shirt(String brand, int quantity, double cost) {
@@ -24,6 +26,8 @@ public class Shirt implements Serializable {
 		this.price = 2 * cost;
 	}
 	
+	//this method is called at post-serialization
+	//if you want to custom de-serialization, you have to define this method
 	private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
 		ois.defaultReadObject();
 		this.price = this.cost + 50;
