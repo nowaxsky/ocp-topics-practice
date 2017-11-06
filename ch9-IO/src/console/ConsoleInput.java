@@ -4,6 +4,12 @@ import java.io.Console;
 
 /**
  * this example need to be used in console(cmd)
+ * 
+ * command: 
+ * > javac ConsoleInput.java
+ * 
+ * > java -cp D:\Eclipse\Java-SE\tutorials\ocp-topics-practice\ch9-IO\src console.ConsoleInput
+ * 
  * @author CPM
  *
  */
