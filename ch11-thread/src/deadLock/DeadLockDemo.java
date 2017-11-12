@@ -5,9 +5,7 @@ public class DeadLockDemo {
 	private static void _sleep() {
 		try {
 			Thread.sleep(1000);
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		} catch (Exception e) {}
 	}
 	
 	public static void main(String[] args) {
