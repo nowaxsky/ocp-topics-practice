@@ -14,6 +14,7 @@ public class Main {
 		Thread t1 = new Thread(r, "one ");
 		t1.start();
 		
+		//Thread.sleep means current thread sleep(main thread instead of t1)
 		//Thread.sleep(4000);
 		t1.sleep(4000);
 		
