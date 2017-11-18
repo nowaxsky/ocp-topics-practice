@@ -14,13 +14,14 @@ public class ExecutorServiceDemo {
 		//choose one line to try
 		ExecutorService es = Executors.newCachedThreadPool();
 //		ExecutorService es = Executors.newFixedThreadPool(5);
+		
 		Callable<String> task = new CallableTask();
 		Future<String> future = es.submit(task);
 		try {
 			
 			//try to add block comment of following two lines
-//			String result = future.get();
-//			System.out.println(result);
+			String result = future.get();
+			System.out.println(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
