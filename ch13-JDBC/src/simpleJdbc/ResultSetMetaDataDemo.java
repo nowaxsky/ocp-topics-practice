@@ -1,5 +1,6 @@
 package simpleJdbc;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -7,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
+
 
 public class ResultSetMetaDataDemo {
 
@@ -83,6 +86,17 @@ public class ResultSetMetaDataDemo {
 		printResultSet(rs);
 	}
 	
+	private static void runCallableStatement(Connection con, Float salary) throws SQLException {
+		CallableStatement cStmt = con.prepareCall("{CALL EMP_SALARY_COUNT(?, ?)}");
+		cStmt.setFloat(1, salary);
+		cStmt.registerOutParameter(2, Types.INTEGER);
+		boolean result = cStmt.execute();
+		int count = cStmt.getInt(2);
+		System.out.println("Result: " + result);
+		System.out.println("There are " + count + " Employees over the salary of " + salary);
+		
+	}
+	
 	
 	public static void main(String[] args) {
 		String url = "jdbc:derby://localhost:1527/myDB";
@@ -105,8 +119,8 @@ public class ResultSetMetaDataDemo {
 			printResultSet(rs);
 //			System.out.println("------------------------------------ runCallableStatement()");
 //			runCallableStatement(con);
-//			System.out.println("------------------------------------ runCallableStatement()");
-//			runCallableStatement(con, Float.valueOf(money));
+			System.out.println("------------------------------------ runCallableStatement()");
+			runCallableStatement(con, Float.valueOf(money));
 			System.out.println("------------------------------------ runPreparedStatement()");
 			runPreparedStatement(con, Double.valueOf(money));
 			System.out.println("------------------------------------ runSqlInjection()");
